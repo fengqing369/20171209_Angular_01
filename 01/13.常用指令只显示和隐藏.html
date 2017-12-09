@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+	
+	<!--
+		ng-show=""  true 显示 false 隐藏
+		ng-hide=""  true 隐藏 false 显示
+
+			通过样式的方式来达到显示和隐藏的目的 
+
+		ng-if="" true 显示 false 隐藏
+
+			通过DOM增加和删除的方式来达到显示和隐藏的目的
+	-->
+
+	<div ng-if="false">111111</div>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+		angular.module('myApp',[])
+
+			.controller('demoCtrl',['$scope',function($scope){
+
+				
+
+			}])
+	</script>
+</body>
+</html>

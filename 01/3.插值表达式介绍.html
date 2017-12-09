@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app ng-init="msg='我是通过ng-init指令给变量赋的初始值'">
+	<!--
+		ng-init="变量1='值1';变量2='值2'" 给变量赋初始值
+	
+		插值表达式的作用
+			1.显示angularjs变量
+			2.显示普通字符串
+			3.三元运算符
+			4.可以进行简单的计算
+
+	-->
+	
+	<p>{{ msg }}</p>
+
+	<p>{{ '我是一个普通的字符串' }}</p>
+
+	<p>{{ 1 == 2 ? '相等' : '不相等' }}</p>
+
+	<p> {{ 1 + 1 }} </p>
+
+
+
+	<script src="node_modules/angular/angular.min.js"></script>
+</body>
+</html>

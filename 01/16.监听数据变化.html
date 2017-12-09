@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+	
+	<input type="text" ng-model="val">
+
+	{{ tips }}
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+		angular.module('myApp',[])
+
+			.controller('demoCtrl',['$scope',function($scope){
+ 
+				/*
+					$scope.$watch('数据',function(newValue,oldValue){})  监听数据的变化
+
+					newValue 用户最新输入的值
+
+					oldValue 用户上一次输入的值	
+
+					回掉函数会在页面一上来的时候主动调用一次
+
+					回掉函数会在每一次数据变化的时候执行
+
+				 */
+				
+				$scope.val = "我是默认值"
+
+				$scope.$watch('val',function(newValue,oldValue){
+					
+					if(newValue.length > 10){
+
+						$scope.tips = "大于10"
+
+					}else{
+
+						$scope.tips = "小于10"
+
+					}
+
+				});
+
+			}])
+	</script>
+</body>
+</html>

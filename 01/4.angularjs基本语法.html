@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app="app">
+	<!--
+		在angularjs中一切都是从模块开始的
+		
+		当我们将angular.js引入到页面中以后 在全局就多了一个angular对象
+
+		ng-app="模块名字"
+
+			告诉angularjs要用当前的模块去管理页面
+
+		ng-controller="控制器的名字"
+
+			告诉angularjs要用当前的控制器控制当前区域
+
+	-->
+	
+	<div class="main" ng-controller="mainCtrl">
+		
+		<button ng-click="clickFn()">点我啊</button>
+
+		<div> {{ msg }} </div>
+
+	</div>
+
+	<div class="sideBar" ng-controller="sideBarCtrl">
+		{{ msg }}
+	</div>
+
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script>
+
+		/*
+			创建模块的语法
+
+				var myApp = angular.module('模块名字',[])
+
+				第二个参数是一个数组 数组里面放着的是当前模块要依赖的其他模块的名字
+				如果当前模块没有要依赖的模块 第二个参数要写一个空数组
+
+				myApp 是创建模块返回的模块对象
+
+			创建控制器的语法
+
+				模块对象.controller('控制器的名字',function(){
+	
+				});
+
+		*/
+
+		var myApp = angular.module('app',[]);
+
+		myApp.controller('mainCtrl',function($scope){
+			
+			// $scope 他是js与html的桥梁 是一个对象 
+			// 向控制器控制的区域提供数据支持
+			$scope.clickFn = function(){
+				alert('就点你了 怎么地吧')
+			}
+
+			$scope.msg = "我是mainCtrl控制器中的msg";
+
+
+		});
+
+		myApp.controller('sideBarCtrl',function($scope){
+			
+			$scope.msg = "我是sideBarCtrl控制器中的msg"
+
+		});
+	</script>
+</body>
+</html>

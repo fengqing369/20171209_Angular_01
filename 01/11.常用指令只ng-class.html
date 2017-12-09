@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+	<style>
+		.red{
+			background:red;
+		}
+	</style>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+	<!--
+		ng-class=""  控制元素类名的增加和删除
+
+			ng-class="{'类名':布尔值}"
+	-->
+	
+	<!--
+		当复选框选中的时候 值是true 反之 false
+	-->
+	<input type="checkbox" ng-model="isRed">
+
+	<div ng-class="{'red':isRed}">11111111</div>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+		angular.module('myApp',[])
+
+			.controller('demoCtrl',['$scope',function($scope){
+
+				$scope.isRed = true;
+
+			}])
+	</script>
+</body>
+</html>

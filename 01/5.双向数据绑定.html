@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app="app" ng-controller="demoCtrl">
+	<!--
+		双向 => html js
+		html => js
+		js => html
+	-->
+	
+	<input type="text" ng-model="val">
+	<p> {{ val }} </p>
+	<button ng-click="setValue()">设置值</button>
+	<button ng-click="getValue()">获取值</button>
+
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script>
+
+		var myApp = angular.module('app',[])
+
+		myApp.controller('demoCtrl',function($scope){
+
+			$scope.val = "123123";
+
+			$scope.setValue = function(){
+
+				$scope.val = "456789";
+
+			}
+
+			$scope.getValue = function(){
+
+				alert($scope.val)
+
+			}
+
+
+		});
+
+	</script>
+</body>
+</html>

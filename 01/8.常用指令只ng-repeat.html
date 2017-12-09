@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app="app" ng-controller="demoCtrl">
+
+	<!--
+		ng-repeat="" 循环数据  想要生成哪个元素 就把这个指令写在哪个元素上
+
+			<li ng-repeat="item in arr"></li>
+	-->
+
+	<p>{{ msg }}</p>
+	<ul>
+		<li ng-repeat="item in arr"> {{ item }} </li>
+	</ul>
+	<ul>
+		<li ng-repeat="person in persons">
+			<p>{{ person.name }}</p>
+			<p>{{ person.age }}</p>
+			<p ng-repeat="hobby in person.hobbies">{{ hobby }}</p>
+		</li>
+	</ul>
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script>
+
+		var myApp = angular.module('app',[]);
+
+		myApp.controller('demoCtrl',['$scope',function($scope){
+
+			$scope.msg = "msg";
+
+			$scope.arr = [1,2,3,4];
+
+			$scope.persons = [
+				{
+					name: '张三',
+					age: 20,
+					hobbies: ['吃饭','睡觉','打豆豆']
+				},
+				{
+					name: '李四',
+					age: 30,
+					hobbies: ['敲代码','改bug']
+				},
+				{
+					name: "王五",
+					age: 15,
+					hobbies: ['打篮球']
+				}
+			];
+
+		}])
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app="app" ng-controller="demoCtrl">
+		
+	{{ msg }}
+
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script>
+		/*
+			angularjs是根据形参的名字去传递实参 如果说形参的名字变了 angularjs就不知道你要干什么了
+
+		*/
+	
+
+		/*var myApp = angular.module('app',[]);
+
+		myApp.controller('demoCtrl',function($scope){
+
+			$scope.msg = "123";
+
+		})*/
+
+		/*var myApp=angular.module("app",[]);myApp.controller("demoCtrl",function($scope){$scope.msg="123"});*/
+
+		/*var myApp=angular.module("app",[]);myApp.controller("demoCtrl",function(a){a.msg="123"});*/
+
+	</script>
+</body>
+</html>

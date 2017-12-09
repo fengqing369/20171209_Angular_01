@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+
+	<button ng-click="clickFn(1,$event)">按钮</button>
+
+	<!--
+		原生JS中有哪些事件 angularjs中就有哪些事件指令 只多不少
+
+		onclick => ng-click
+
+		onmouseover => ng-mouseover
+	
+		ng-dblclick 双击事件
+
+		在angularjs中 事件对象是通过参数的形式 传递进去的
+
+	-->
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+		angular.module('myApp',[])
+
+			.controller('demoCtrl',['$scope',function($scope){
+
+				$scope.clickFn = function(n,e){
+					console.log(e)
+				}
+
+			}])
+	</script>
+</body>
+</html>

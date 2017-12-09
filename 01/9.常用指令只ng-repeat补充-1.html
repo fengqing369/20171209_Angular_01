@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+	
+	<ul>
+		<li ng-repeat="item in arr" class="{{ $first ? 'first' : '' }}">
+			<p>当前的值是 {{item}}</p>
+			<p>当前的索引是 {{ $index }}</p>
+			<p>当前是否是第一次循环 {{ $first }}</p>
+			<p>当前是否是最后一次循环 {{ $last }}</p>
+			<p>当前循环是否是中间项 {{ $middle }}</p>
+			<p>当前循环是否是奇数行 {{ $odd }} </p>
+			<p>当前循环是否是偶数行 {{ $even }} </p>
+		</li>
+	</ul>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+		angular.module('myApp',[])
+
+			.controller('demoCtrl',['$scope',function($scope){
+
+				$scope.arr = [1,2,3,4,5];
+
+			}])
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app="app" ng-controller="demoCtrl">
+	
+	{{ msg }}
+
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script>
+		/*
+			压缩工具不会对字符串进行压缩	
+		*/
+	
+		/*var myApp = angular.module('app',[]);
+
+		myApp.controller('demoCtrl',['$scope','$timeout',function($scope,$timeout){
+
+			$scope.msg = "123";
+
+		}])*/
+
+		var myApp=angular.module("app",[]);myApp.controller("demoCtrl",["$scope",function(a){a.msg="123"}]);
+	</script>
+</body>
+</html>

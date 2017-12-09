@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+
+	<!--
+		ng-src="数据"
+	-->
+
+	<img ng-src="{{ imgUrl }}">
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+		angular.module('myApp',[])
+
+			.controller('demoCtrl',['$scope',function($scope){
+
+				$scope.imgUrl = "https://www.baidu.com/img/bd_logo1.png";
+
+			}])
+	</script>
+</body>
+</html>

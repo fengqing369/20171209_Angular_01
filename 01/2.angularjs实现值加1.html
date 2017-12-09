@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app>
+	<!--
+		ng-click="" 给元素添加点击事件
+
+		ng-model="" 获取表单元素的值
+	
+		ng-app angularjs在页面加载完成以后会去页面中查找 有没有ng-app属性 如果有 就会去解析ng-app所包裹的代码 如果没有 什么都不干
+
+		在angularjs页面中 以ng-开头的属性 叫做指令
+
+		指令主要是用来 操作DOM的
+
+	-->
+	<input type="text" ng-model="val">
+	<button ng-click="val = val - 0 + 1">+1</button>
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script>
+		/*
+			1.获取文本框和按钮(忽略)
+			2.给按钮添加点击事件
+			3.在点击事件的处理函数中 获取文本框的值 并且+1
+			4.将计算的结果重新赋值给文本框
+		*/
+
+	</script>
+</body>
+</html>
