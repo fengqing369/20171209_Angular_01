@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp">
+
+	<div ng-controller="demoCtrlA">
+		
+	</div>
+
+	<div ng-controller="demoCtrlB">
+		
+	</div>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+
+		/*
+			服务的语法
+
+				模块对象.service('名称',[function(){
+					
+					this.name = "张三";
+
+					this.say = function(){
+						alert(this.name)
+					}
+
+				}])
+
+				angularjs会将服务的回调函数当作构造器去new 那么我们需要想办法拿到帮我们new出来的对象 才能用对象.属性的方式取到我们需要的数据
+
+
+		*/
+		
+		/*function Person(){
+			this.name = "张三";
+		}
+
+		var p = new Person;*/
+
+		// alert(p.name)
+
+
+		angular.module('myApp',[])
+
+			.service('myService',[function(){
+
+				this.name = '张三';
+
+				this.say = function(){
+
+					alert(this.name);
+
+				}
+
+			}])
+
+			.controller('demoCtrlA',['$scope', 'myService',function($scope, myService){
+
+				// myService 就是angularjs帮我们new出的对象
+				
+				myService.name = "李四";
+				
+
+			}])
+
+			.controller('demoCtrlB',['$scope', 'myService',function($scope, myService){
+				
+				myService.say();
+				
+
+			}])
+	</script>
+</body>
+</html>

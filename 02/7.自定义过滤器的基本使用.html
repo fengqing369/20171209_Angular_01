@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+		
+	{{ phone | phoneStar }}
+
+	{{ str | firstLetterUpper }}
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+
+		/*
+			
+			模块对象.filter('名称',[function(){
+					
+				return function(value){
+					
+					// value 就是即将要处理的数据
+
+				}
+
+			}])
+
+		*/
+
+		angular.module('myApp',[])
+
+			.filter('phoneStar',[function(){
+
+				return function(value){
+
+					return value.substr(0,3) + "****" + value.substr(7);
+
+				}
+
+			}])
+
+			.filter('firstLetterUpper',[function(){
+
+				return function(value){
+
+					return value.substr(0,1).toUpperCase() + value.substr(1)
+
+				}
+
+			}])
+
+			.controller('demoCtrl',['$scope',function($scope){
+
+				$scope.phone = "18598987654"; // 185****7654
+
+				$scope.str = "angularjs" // Angularjs
+
+			}])
+
+
+	</script>
+</body>
+</html>

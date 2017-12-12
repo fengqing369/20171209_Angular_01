@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+	
+	<app-header>我是自定义指令标签内部的内容</app-header>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+
+		/*
+			需求：将自定义指令标签内部的内容显示在模板内部
+
+				1.写配置项 transclude:true 
+
+					告诉angularjs要将模板标签内部的内容给我保存起来
+
+				2.利用ng-transclude指令将内容显示模板中
+
+		*/
+
+		angular.module('myApp',[])
+
+			.directive('appHeader',[function(){
+
+				return {
+					// 为自定义指令添加HTML模板
+					templateUrl: './header.html',
+					transclude: true,
+					link: function(scope, element, attributes){
+
+						// scope 向指令的模板中暴露数据
+						scope.msg = "我是msg";
+
+						scope.clickFn = function(){
+							alert('111')
+						}
+
+					}
+				}
+
+			}])
+
+			.controller('demoCtrl',['$scope',function($scope){
+
+				
+
+			}])
+	</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+		angular.module('myApp',[])
+
+			.controller('demoCtrl',['$scope', '$http', function($scope, $http){
+
+				/*$.ajax({
+					url:'',
+					type:'',
+					data:{},
+					success:function(result){}
+				})*/
+
+				/*$http({
+					url: './test.json', // 请求的接口地址
+					method: 'get', // 请求的方式
+					params : {
+						a: 1,
+						b: 2
+					}
+				}).then(function(res){
+
+					// 请求成功的回掉函数
+					console.log(res.data)
+
+				},function(){
+					// 请求失败的回掉函数
+				})*/
+
+
+				/*$http({
+					url: './test.json',
+					method: 'post',
+					data: {
+						c: 3,
+						d: 4
+					}
+				}).then(function(res){
+
+					console.log(res)
+
+					// 如果不想处理请求失败的请求 第二个回掉函数是可以省略掉的
+
+				})*/
+
+
+
+				/*$http.get('./test.json',{
+					params:{ a:1,b:2 }
+				}).then(function(res){
+					console.log(res)
+				});*/
+
+				/*$http.post('./test.json',{
+					c: 3,
+					d: 4
+				}).then(function(res){
+					console.log(res)
+				})*/
+
+
+			}])
+	</script>
+</body>
+</html>

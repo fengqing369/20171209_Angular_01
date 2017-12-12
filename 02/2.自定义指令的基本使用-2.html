@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+		
+	<!-- <div app-header></div> -->
+	<app-header></app-header>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+		angular.module('myApp',[])
+
+			.directive('appHeader',[function(){
+
+				return {
+					// 为自定义指令添加HTML模板
+					// template:'<div class="header"><a href="#" class="logo"></a><nav><li><a href="#">首页</a></li><li><a href="#">新闻</a></li></nav></div>'
+					templateUrl: './header.html'
+				}
+
+			}])
+
+			.controller('demoCtrl',['$scope',function($scope){
+
+				
+
+			}])
+	</script>
+</body>
+</html>

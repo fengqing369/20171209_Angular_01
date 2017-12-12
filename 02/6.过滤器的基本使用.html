@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+	
+	<!--
+		{{ 数据 | 过滤器名称:参数1:参数2 }}
+	
+		date 日期过滤器
+
+		currency 货币过滤器
+
+		number 数字过滤器
+
+		uppercase 转大写
+
+		lowercase 转小写
+
+		filter 根据条件对数据进行过滤 只要数据包含条件 显示数据
+
+		orderBy 排序 
+
+			orderBy:'age' 根据age字段进行排序 升序
+
+			orderBy:'-age' 根据age字段进行排序 降序
+
+		limitTo 限制过滤器
+
+		json 将json数据以良好的格式显示在页面中
+
+	-->
+
+	<p>{{ time | date:'yyyy年MM月dd日 HH时mm分ss秒' }}</p>
+	<p>{{ money | currency:'¥' }}</p>
+	<p>{{ num | number:2 }}</p>
+	<p>{{ str | uppercase }}</p>
+	<ul>
+		<li ng-repeat="item in persons | filter:{ name:'李四' } ">
+			{{ item.name }} {{ item.age }}
+		</li>
+	</ul>
+
+	<ul>
+		<li ng-repeat="item in persons | orderBy:'-age'">
+			{{ item.name }} {{ item.age }}
+		</li>
+	</ul>
+
+	<ul>
+		<li ng-repeat="item in persons | limitTo:2:2 ">
+			{{ item.name }} {{ item.age }}
+		</li>
+	</ul>
+	
+	<pre>
+{{ persons | json}}
+	</pre>
+	
+	<pre>
+		sfsf
+		sdf
+		sdf
+		sdf
+		sdf
+		dsf
+		sdf
+	</pre>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+		angular.module('myApp',[])
+
+			.controller('demoCtrl',['$scope',function($scope){
+
+				$scope.time = new Date();
+
+				$scope.money = 998;
+
+				$scope.num = 9876543567876;
+
+				$scope.str = "angularjs";
+
+				$scope.persons = [
+					{
+						name:'张三',
+						age:10
+					},
+					{
+						name:'李四',
+						age:5
+					},
+					{
+						name:'王五',
+						age:20
+					},
+					{
+						name:'赵六',
+						age:15
+					}
+				]
+
+			}])
+	</script>
+</body>
+</html>

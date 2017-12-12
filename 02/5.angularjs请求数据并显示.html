@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+	
+	<ul>
+		<li ng-repeat="item in result">
+			{{ item.name }} {{ item.age }}
+			<div ng-bind-html="item.description"></div>
+		</li>
+	</ul>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-sanitize.min.js"></script>
+	<script>
+
+		/*
+			我们需要用ng-bind-html指令渲染数据中的html标签
+
+			angularjs将ng-bind-html指令封装在一个单独的模块中 要使用这个指令 我们需要先做依赖模块
+
+			angularjs中模块依赖需要做两步操作
+				
+				1.将模块文件引入到页面中
+
+				2.将模块的名字写在入口模块的第二个参数中
+
+					angular-sanitize => ngSanitize
+
+
+		*/
+
+		angular.module('myApp',['ngSanitize'])
+
+			.controller('demoCtrl',['$scope', '$http', function($scope, $http){
+
+				$http({
+					url: './test.json', // 请求的接口地址
+					method: 'get' // 请求的方式
+				}).then(function(res){
+
+					// 请求成功的回掉函数
+					console.log(res.data)
+
+					$scope.result = res.data;
+
+				})
+
+
+
+			}])
+	</script>
+</body>
+</html>

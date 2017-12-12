@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+		
+	<div my-dir="green">111111</div>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+
+		/*
+			自定义指令的语法
+
+				模块对象.directive('名称',[function(){
+					
+					return {
+						
+					}
+
+				}])
+
+			自定义指令的使用
+				
+				js => myDir
+
+				html => my-dir
+
+
+		*/
+
+		angular.module('myApp',[])
+
+			.directive('myDir',[function(){
+
+				return {
+					// angularjs提供给我们专门用来写DOM操作的地方
+					link: function(scope, element, attributes){
+
+						// element 指令所在的元素
+						// angularjs为了方便我们去做DOM操作 在原生DOM的基础上扩展了一些方法 这些方法的名字和用法跟jquery是一样的 但是它不是jquery
+						// console.log(element)
+						
+						// attributes 指令所在元素身上的属性集合 
+	
+						
+						console.log(attributes)
+
+						element.css('background',attributes.myDir);
+
+						element.on('mouseenter',function(){
+							element.css('background','skyblue');
+						})
+
+						element.on('mouseleave',function(){
+							element.css('background','yellow')
+						})
+
+					}
+				}
+
+			}])
+
+			.controller('demoCtrl',['$scope',function($scope){
+
+				
+
+			}])
+	</script>
+</body>
+</html>
