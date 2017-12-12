@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--
+		jsonp 全名 json with padding 
+		解决的问题 是跨域请求数据
+		利用的核心点是script标签的src属性天生就有跨域的特性
+
+		jsonp不是一个新的技术 他更多的是前端与后端的约定
+
+		前端要做的事情
+
+			1.在全局环境下准备个函数 用来接收后端传递过来的数据
+
+			2.将全局环境下的函数名字通过callback传递给后端
+
+				<script src="http://www.example.com?callback=函数名字"></script>
+
+		后端要的事情
+			
+			1.通过callback参数拿到前端传递过来的函数名字
+
+				$_GET['callback']
+
+			2.通过各种手段取到数据
+
+			3.返回前端传递过来的函数调用 将数据通过函数参数的形式传递给前端
+				
+				"GetData({a:1,b:2})" 
+	-->
+	
+	<script>
+		function GetData(data){
+			console.log(data)
+		}
+	</script>
+	<!-- <script src="http://www.baidu.com?callback=GetData"></script> -->
+	<script>
+		GetData({a:1,b:2})
+	</script>
+</body>
+</html>

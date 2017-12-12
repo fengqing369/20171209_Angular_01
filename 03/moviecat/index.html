@@ -6,55 +6,37 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/base.css">
 </head>
-<body>
-    <nav class="navbar navbar-default">
+<body ng-app="app">
+
+    <nav class="navbar navbar-default" ng-controller="navBarCtrl">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">私人影院</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">正在热映</a></li>
-                    <li><a href="#">即将上映</a></li>
+                    <li ui-sref-active="active"><a ui-sref="in_theaters({page:1})">正在热映</a></li>
+                    <li ui-sref-active="active"><a ui-sref="coming_soon({page:1})">即将上映</a></li>
                     <li><a href="#">Top250</a></li>
                 </ul>
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="请输入搜索内容">
+                        <input type="text" class="form-control" placeholder="请输入搜索内容" ng-model="keyword">
                     </div>
-                    <button type="button" class="btn btn-default">搜索</button>
+                    <button type="button" class="btn btn-default" ng-click="searchFn()">搜索</button>
                 </form>
             </div>
         </div>
     </nav>
-    <div class="container">
-        <h3 class="page-header">页面标题</h3>
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <div class="img-box">
-                        <img src="">
-                    </div>
-                    <div class="caption">
-                        <h4></h4>
-                        <p>
-                            导演：
-                        </p>
-                        <p>
-                            主演：
-                        </p>
-                        <p>年份：</p>
-                        <p>评分：</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <nav>
-          <ul class="pager">
-            <li><a href="javascript:;">上一页</a></li>
-            <li><a href="javascript:;">下一页</a></li>
-          </ul>
-        </nav>
-    </div>
+    
+    <div ui-view></div>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-ui-router/angular-ui-router.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/route.js"></script>
+    <script src="js/public.js"></script>
+    <script src="views/in_theaters/in_theaters.js"></script>
+    <script src="views/coming_soon/coming_soon.js"></script>
 </body>
 </html>

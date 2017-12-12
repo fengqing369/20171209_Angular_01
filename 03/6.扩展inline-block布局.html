@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		.parent{
+			width:1000px;
+			height:500px;
+			background:skyblue;
+			margin:0 auto;
+			
+			text-align:center;
+		}
+
+		.children {
+			width:200px;
+		}
+
+		.children-1{
+			background:pink;
+			height:100px;
+			line-height:30px;
+		}
+		.children-2{
+			background:green;
+			height:500px;
+			line-height:50px;
+		}
+
+		.ibox{
+			display: inline-block;
+			*display: inline;
+			*zoom: 1;
+			font-size:12px;
+			letter-spacing: normal;
+			vertical-align:top; 
+		}
+
+		.cleargap{
+			font-size: 0;
+			letter-spacing:-4px;
+		}
+
+		*+html .ie7{
+			background:red;
+		}
+
+		li{
+			display: list-item;
+		}
+
+	</style>
+</head>
+<body>
+	<!--
+		1.浮动和外边距一起使用在IE低版本容易产生兼容性问题
+		2.当浮动的元素中有比较高的盒子的时候 那么下一排的盒子会卡在最高的盒子的右边
+		3.不灵活 不能水平据中 不能垂直居中 垂直居底
+
+		css hack
+	-->
+	
+	<!-- <div class="parent cleargap">
+		<div class="children children-1 ibox">1111111</div>
+		<div class="children children-2 ibox">2222222</div>
+	</div> -->
+		
+	<div class="cleargap">
+		<div class="ibox">
+			<div class="cleargap">
+				<div class="ibox ie7">1</div>
+				<div class="ibox">2</div>
+				<div class="ibox">3</div>
+			</div>
+		</div>
+		<div class="ibox">2</div>
+	</div>
+
+</body>
+</html>

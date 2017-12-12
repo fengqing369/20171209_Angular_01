@@ -18,4 +18,4 @@
 - 传统项目以<文件类型>划分目录结构
 - angularjs项目以<功能>划分目录结构
 
-### [豆瓣电影](https://developers.douban.com/)
+### [私人影院](https://developers.douban.com/)
