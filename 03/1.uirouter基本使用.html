@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+	
+	<!-- 
+		<a href="#!/index">首页</a>
+		<a href="#!/list">列表页</a>
+	-->
+	
+	<a ui-sref="index">首页</a>
+	<a ui-sref="list">列表页</a>
+
+	<div ui-view></div>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-ui-router/angular-ui-router.min.js"></script>
+	<script>
+
+		/*
+			路由模块的名字 ui.router
+
+			配置路由的语法
+
+				模块对象.config(['$stateProvider',function($stateProvider){
+					
+					// 路由的具体配置
+					// $stateProvider 配置路由的具体对象
+					// ui.router要求每个路由必须有名字 锚点值要以/开头 					
+					$stateProvider
+						.state({
+							name: 'index', // 路由的名字
+							url: '/index', // 配置锚点
+							templateUrl: './tpl/index.html' // 模板地址 
+						})
+
+				}])
+
+				<div ui-view></div>
+
+					告诉angularjs 有ui-view指令的元素就是路由挖的坑 需要将模板文件的内容显示在这个坑里面
+
+
+
+		*/
+
+		angular.module('myApp',['ui.router'])
+
+			.config(['$stateProvider',function($stateProvider){
+
+				$stateProvider
+					.state({
+						name: 'index',
+						url: '/index',
+						templateUrl:'./tpl/index.html'
+					})
+					.state({
+						name: 'list',
+						url: '/list',
+						templateUrl: './tpl/list.html'
+					})
+
+			}])
+
+			.controller('demoCtrl',['$scope',function($scope){
+
+				
+
+			}])
+	</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp" ng-controller="demoCtrl">
+	
+	<a ui-sref="index">首页</a>
+	<a ui-sref="list">列表页</a>
+
+	<div ui-view="view-a"></div>
+
+	<div ui-view="view-b"></div>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-ui-router/angular-ui-router.min.js"></script>
+	<script>
+		angular.module('myApp',['ui.router'])
+
+			.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+
+				$stateProvider
+					.state({
+						name: 'index',
+						url: '/index',
+						views : {
+							'view-a':{
+								template:'我是首页view-a中的内容'
+							},
+							'view-b':{
+								template:'我是首页view-b中的内容'
+							}
+						}
+					})
+					.state({
+						name: 'list',
+						url: '/list',
+						views : {
+							'view-a':{
+								template:'我是列表页view-a中的内容'
+							},
+							'view-b':{
+								template:'我是列表页view-b中的内容'
+							}
+						}
+					})
+
+				$urlRouterProvider.otherwise('/index');
+			}])
+
+			.controller('demoCtrl',['$scope',function($scope){
+
+				
+
+			}])
+	</script>
+</body>
+</html>

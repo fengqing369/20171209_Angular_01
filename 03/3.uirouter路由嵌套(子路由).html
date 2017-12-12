@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp">
+	
+	<a ui-sref="index">首页</a>
+	<a ui-sref="list">列表页</a>
+
+	<div ui-view></div>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-ui-router/angular-ui-router.min.js"></script>
+	<script>
+
+		angular.module('myApp',['ui.router'])
+
+			.config(['$stateProvider',function($stateProvider){
+
+				$stateProvider
+					.state({
+						name: 'index',
+						url: '/index',
+						templateUrl:'./tpl/index.html'
+					})
+					.state({
+						name: 'list',
+						url: '/list',
+						templateUrl: './tpl/list.html'
+					})
+					.state({
+						name: 'list.comment',
+						url: '/comment',
+						templateUrl: './tpl/comment.html'
+					})
+					.state({
+						name: 'list.category',
+						url: '/category',
+						templateUrl: './tpl/category.html'
+					})
+
+			}])
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs demo</title>
+</head>
+<body ng-app="myApp">
+	
+	<a ui-sref="index">首页</a>
+	<a ui-sref="list">列表页</a>
+
+	<div ui-view></div>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-ui-router/angular-ui-router.min.js"></script>
+	<script>
+
+		/*
+			从列表页跳转到详情页 将列表页的文章ID传递到详情页
+
+				1.在被传递参数页面的路由中配置参数占位符
+
+				2.在链接中配置实际的参数
+
+				3.在被传递参数页面的控制器中获取传递过来的路由参数
+
+		*/
+
+		angular.module('myApp',['ui.router'])
+
+			.config(['$stateProvider',function($stateProvider){
+
+				$stateProvider
+					.state({
+						url:'/index',
+						templateUrl:'./tpl/index.html',
+						name: 'index'
+					})
+					.state({
+						url:'/list',
+						templateUrl:'./tpl/list.html',
+						name: 'list'
+					})
+					.state({
+						url:'/article/:id',
+						templateUrl:'./tpl/article.html',
+						name: 'article',
+						controller: 'articleCtrl'
+					})
+
+			}])
+
+			.controller('articleCtrl',['$scope', '$stateParams',function($scope, $stateParams){
+
+				// $stateParams 保存了当前路由传递过来的参数
+				console.log($stateParams.id)
+
+				$scope.msg = "当前文章的ID是" + $stateParams.id;
+
+
+			}])
+	</script>
+</body>
+</html>
